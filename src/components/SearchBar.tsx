@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { css } from '@emotion/react';
 
 const Container = styled.div`
   display: flex;
@@ -15,9 +16,10 @@ const Container = styled.div`
 `;
 
 const InputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 70px;
+  grid-row-gap: 20px;
 `;
 
 const InputWithLabelContainer = styled.div`
@@ -60,9 +62,33 @@ function SearchBar() {
         </InputWithLabelContainer>
         <InputWithLabelContainer>
           <label htmlFor="search">제작연도</label>
-          <ReactDatePicker selected={startDate} shouldCloseOnSelect dateFormat={'yyyy.MM.dd'} onChange={(date: Date) => setStartDate(date)} />
+          <ReactDatePicker
+            selected={startDate}
+            shouldCloseOnSelect
+            dateFormat={'yyyy.MM.dd'}
+            onChange={(date: Date) => setStartDate(date)}
+            css={css({
+              width: '70px',
+            })}
+          />
           {'~'}
-          <ReactDatePicker selected={endDate} shouldCloseOnSelect dateFormat={'yyyy.MM.dd'} onChange={(date: Date) => setEndDate(date)} />
+          <ReactDatePicker
+            selected={endDate}
+            shouldCloseOnSelect
+            dateFormat={'yyyy.MM.dd'}
+            onChange={(date: Date) => setEndDate(date)}
+            css={css({
+              width: '70px',
+            })}
+          />
+        </InputWithLabelContainer>
+        <InputWithLabelContainer>
+          <label htmlFor="search">정렬 기준</label>
+          <select>
+            <option value="0">선택</option>
+            <option value="1">제작연도순</option>
+            <option value="2">영화명순(ㄱ~Z)</option>
+          </select>
         </InputWithLabelContainer>
       </InputContainer>
       <ButtonContainer>
