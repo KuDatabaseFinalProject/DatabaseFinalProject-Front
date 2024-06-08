@@ -33,6 +33,11 @@ export const movieAtom = atom<Movie>({
   },
 });
 
+export const selectedPageNumberAtom = atom<number>({
+  key: 'selectedPageNumberAtom',
+  default: -1,
+});
+
 export const isLoadingAtom = atom<boolean>({
   key: 'isLoadingAtom',
   default: false,

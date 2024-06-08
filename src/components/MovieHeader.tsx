@@ -7,7 +7,7 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   min-width: 1000px;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: 2fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: #4682b4;
   height: 50px;
 `;

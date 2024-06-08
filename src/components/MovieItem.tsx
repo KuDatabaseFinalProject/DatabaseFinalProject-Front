@@ -13,7 +13,7 @@ const Container = styled.div<{ backgroundColor: string }>`
   align-items: center;
   width: 100%;
   min-width: 1000px;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: 2fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-column-gap: 5px;
   background-color: ${(props) => props.backgroundColor};
   height: 50px;
@@ -21,6 +21,10 @@ const Container = styled.div<{ backgroundColor: string }>`
 
 const Item = styled.div<{ align?: string }>`
   text-align: ${(props) => props.align};
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-lines: 2;
 `;
 
 function MovieItem({ movie, color }: MovieItemProps) {

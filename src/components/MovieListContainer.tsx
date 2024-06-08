@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useRecoilValue } from 'recoil';
-import { movieAtom } from '../recoils/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { movieAtom, selectedPageNumberAtom } from '../recoils/atoms';
 import MovieItem from './MovieItem';
 import MovieHeader from './MovieHeader';
 import ReactPaginate from 'react-paginate';
@@ -39,6 +39,7 @@ const PaginationContainer = styled.div`
 
 function MovieListContainer() {
   const movie = useRecoilValue(movieAtom);
+  const [selectedPageNumber, setSelectedPageNumber] = useRecoilState(selectedPageNumberAtom);
 
   return (
     <Container>
@@ -53,6 +54,8 @@ function MovieListContainer() {
       </ListContainer>
       <PaginationContainer>
         <ReactPaginate
+          forcePage={selectedPageNumber}
+          onPageChange={(selectedItem) => setSelectedPageNumber(selectedItem.selected)}
           pageCount={movie.totalPages}
           pageRangeDisplayed={5}
           marginPagesDisplayed={5}
