@@ -32,3 +32,8 @@ export const movieAtom = atom<Movie>({
     empty: false,
   },
 });
+
+export const isLoadingAtom = atom<boolean>({
+  key: 'isLoadingAtom',
+  default: false,
+});
